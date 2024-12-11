@@ -25,9 +25,9 @@ body {
   line-height: 1.7em;
   background-image: url('/images/background.png');  /* 设置背景图片 */
     background-size: cover;        /* 背景图片覆盖整个页面 */
-    background-position: center;   /* 背景图片居中显示 */
+    //background-position: center;   /* 背景图片居中显示 */
     background-repeat: no-repeat;  /* 防止背景图片重复 */
-    background-color: rgba(255, 255, 255, 0.5);  /* 使用透明的白色背景色 */
+    background-color: rgba(255, 255, 255, 0.1);  /* 使用透明的白色背景色 */
     margin: 0;
     padding: 0;
     // font-family: Arial, sans-serif;
