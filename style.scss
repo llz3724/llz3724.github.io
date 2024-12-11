@@ -23,7 +23,7 @@ body {
   font-family: $base-font;
   color: $base-color;
   line-height: 1.7em;
-  background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+  background: linear-gradient(rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.01)),
                 url('/images/background.png');
     background-size: cover;        /* 背景图片覆盖整个页面 */
     background-position: center;   /* 背景图片居中显示 */
