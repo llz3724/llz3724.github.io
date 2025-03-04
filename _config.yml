@@ -1,6 +1,6 @@
 name: "llz3724's blog"
 description: "llz3724的个人博客"
-
+markdown: kramdown
 avatar: https://llz3724.github.io/images/avatar.jpg
 # favicon: https://pianfan.github.io/images/favicon.ico
 
