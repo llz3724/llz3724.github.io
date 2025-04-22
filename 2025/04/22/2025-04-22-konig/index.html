@@ -19,24 +19,22 @@
   <meta name="author" content="llz3724">
   <meta name="keywords" content="">
   
-    <meta name="description" content="机器学习的多元微积分基础">
+    <meta name="description" content="柯尼希定理 我们知道有质点系，质点系的动量是好算的，那质点系的动能和质心有什么关系？ 设mi, vi是质点系第i个对象的质量、相对于地面的速度，mc, vc是质心的质量、速度，显然有 $$ K_{total}&#x3D;\sum_{i}^{}\frac{1}{2}m_iv_i^2  $$ 设vi′ &#x3D; vi − vc是第i个对象相对质心的速度，代入Ktotal的定义式得 $$ K_{total}&#x3D;\sum_">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CS229: 0">
-<meta property="og:url" content="http://example.com/2025/04/21/2025-04-21-cs229_0/index.html">
+<meta property="og:title" content="大学物理: 柯尼希定理">
+<meta property="og:url" content="http://example.com/2025/04/22/2025-04-22-konig/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="机器学习的多元微积分基础">
+<meta property="og:description" content="柯尼希定理 我们知道有质点系，质点系的动量是好算的，那质点系的动能和质心有什么关系？ 设mi, vi是质点系第i个对象的质量、相对于地面的速度，mc, vc是质心的质量、速度，显然有 $$ K_{total}&#x3D;\sum_{i}^{}\frac{1}{2}m_iv_i^2  $$ 设vi′ &#x3D; vi − vc是第i个对象相对质心的速度，代入Ktotal的定义式得 $$ K_{total}&#x3D;\sum_">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-22T02:03:25.460Z">
+<meta property="article:published_time" content="2025-04-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-04-22T03:01:11.640Z">
 <meta property="article:author" content="llz3724">
-<meta property="article:tag" content="cs229">
-<meta property="article:tag" content="ai">
-<meta property="article:tag" content="ml">
+<meta property="article:tag" content="physics">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>CS229: 0 - Hexo</title>
+  <title>大学物理: 柯尼希定理 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CS229: 0"></span>
+            <span id="subtitle" data-typed-text="大学物理: 柯尼希定理"></span>
           
         </div>
 
@@ -213,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-21 00:00" pubdate>
-          2025年4月21日 凌晨
+        <time datetime="2025-04-22 00:00" pubdate>
+          2025年4月22日 凌晨
         </time>
       </span>
     
@@ -225,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          848 字
+          335 字
         
       </span>
     
@@ -236,7 +234,7 @@
         
         
         
-          8 分钟
+          3 分钟
         
       </span>
     
@@ -273,83 +271,39 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">CS229: 0</h1>
+            <h1 id="seo-header">大学物理: 柯尼希定理</h1>
             
             
               <div class="markdown-body">
                 
-                <p>机器学习的多元微积分基础</p>
-<span id="more"></span>
-<h1 id="数学基础">数学基础</h1>
-<h2 id="偏导和梯度">偏导和梯度</h2>
-<p>考虑<span class="math inline"><em>f</em>(<em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, ..., <em>x</em><sub><em>n</em></sub>) : ℝ<sup><em>n</em></sup> → ℝ</span>，对某一个自变量<span class="math inline"><em>x</em><sub><em>i</em></sub></span>求导，其余参数视为常数，记为</p>
-<p><br /><span class="math display">$$\frac {\partial f(x)}{\partial x_i}$$</span><br /></p>
-<p>而<span class="math inline"><em>f</em>(<em>x</em>)</span>的梯度，是<span class="math inline"><em>f</em></span>在<span class="math inline"><em>x</em></span>这一点的“导数”的方向，也就是在该点附近，用线性空间中的一组基来近似，沿着梯度方向走，<span class="math inline"><em>f</em>(<em>x</em>)</span>增长最快。几何意义，就是该点等高线的切线的方向。</p>
-<p>如何理解这个东西呢？</p>
-<p>在一维的时候你很难联想到导数的正负和往哪边走函数会变大这回事，如果非要这样理解，高维的时候每一维的长度又会对方向起作用，这是不能合理外推的，更迷糊了。</p>
-<p>但是微积分的核心思想还是线性化，可以这么考虑，每一维的梯度是对函数这一维的“切片”的线性近似，梯度就是在一点将函数近似为了一个高维立方体，偏导大小指示了这一维的变换速度，就相当于把函数简化到了一个高维立方体里面考虑，就自然多了。</p>
-<p><br /><span class="math display">$$\nabla f(x)=\left[\begin{matrix}
-  \frac {\partial f(x)}{\partial x_1} \\
-  \frac {\partial f(x)}{\partial x_2} \\
-  ... \\
-\frac {\partial f(x)}{\partial x_n}
-\end{matrix}\right]$$</span><br /></p>
-<p>而<span class="math inline"><em>f</em>(<em>x</em>)</span>的二阶导，类似地，是一个矩阵（考虑每个维度两两求偏导），而一个事实是</p>
-<p><br /><span class="math display">$$\frac {\partial f(x)}{\partial x_i \partial x_j}=\frac {\partial f(x)}{\partial x_j \partial x_i}$$</span><br /></p>
-<p>学了数学会知道如果二者都连续的话是成立的。</p>
-<p>所以二阶导是一个实对称的矩阵，称为海森矩阵<span class="math inline">∇<sup>2</sup> = <em>H</em></span></p>
-<p><br /><span class="math display">$$H_{i,j}=\frac {\partial f(x)}{\partial x_i \partial x_j}$$</span><br /></p>
-<p>如果<span class="math inline"><em>H</em>(<em>x</em><sub>0</sub>)</span>是半正定的，那么<span class="math inline"><em>f</em></span>在<span class="math inline"><em>x</em><sub>0</sub></span>是凸的。</p>
-<p>一些常见的梯度</p>
+                <h1 id="柯尼希定理">柯尼希定理</h1>
+<p>我们知道有质点系，质点系的动量是好算的，那质点系的动能和质心有什么关系？</p>
+<p>设<span class="math inline"><em>m</em><sub><em>i</em></sub>, <em>v</em><sub><em>i</em></sub></span>是质点系第<span class="math inline"><em>i</em></span>个对象的质量、相对于地面的速度，<span class="math inline"><em>m</em><sub><em>c</em></sub>, <em>v</em><sub><em>c</em></sub></span>是质心的质量、速度，显然有</p>
 <p><br /><span class="math display">$$
-\begin{aligned}
-&amp;\nabla_{x} (x^TAx)=2Ax\\
-&amp;\nabla_{x} (v^Tx)=v\\
-&amp;\nabla_A|A|=|A|(A^{-1})^T
-\end{aligned}
+K_{total}=\sum_{i}^{}\frac{1}{2}m_iv_i^2 
 $$</span><br /></p>
-<p><span class="math inline"><em>A</em></span>是一堆数字到一个数字的映射。梯度就是泛函<span class="math inline">|<em>A</em>|</span>对每个变量求导的结果。</p>
-<p>考虑现在对<span class="math inline"><em>a</em><sub>11</sub></span>求偏导</p>
+<p>设<span class="math inline"><em>v</em><sub><em>i</em></sub>′ = <em>v</em><sub><em>i</em></sub> − <em>v</em><sub><em>c</em></sub></span>是第<span class="math inline"><em>i</em></span>个对象相对质心的速度，代入<span class="math inline"><em>K</em><sub><em>t</em><em>o</em><em>t</em><em>a</em><em>l</em></sub></span>的定义式得</p>
 <p><br /><span class="math display">$$
-\begin{aligned}
-\frac{\partial{|A|}}{\partial{a_{i,j}}}&amp;=\lim_{h\rightarrow 0}\frac{\left|\begin{matrix}
-a_{1,1}+h &amp; a_{1,2} &amp; ... &amp; a_{1,n}\\
-a_{2,1} &amp; a_{2,2} &amp; ... &amp; a_{2,n}\\
- &amp;  &amp;...  &amp; \\
-a_{n,1} &amp; a_{n,2} &amp; ... &amp; a_{n,n}
-\end{matrix}\right|-\left|\begin{matrix}
-a_{1,1} &amp; a_{1,2} &amp; ... &amp; a_{1,n}\\
-a_{2,1} &amp; a_{2,2} &amp; ... &amp; a_{2,n}\\
- &amp;  &amp;...  &amp; \\
-a_{n,1} &amp; a_{n,2} &amp; ... &amp; a_{n,n}
-\end{matrix}\right|}{h}\\
-&amp;=\lim_{h\rightarrow 0}\frac{hM}{h}\\
-&amp;=M\\
-\end{aligned}
+K_{total}=\sum_{i}^{}\frac{1}{2}m_i(v_i'+v_c)^2=\sum_{i}^{}\frac{1}{2} m_iv_i'^2+v_c\sum_{i}^{}m_iv_i'+\sum_{}^{}\frac{1}{2}m_iv_c^2\\
+=K_c+\sum_{i}^{}K'_i+v_c\sum_{i}^{}m_iv_i'
+$$</span><br /></p>
+<p>而质心系中，质心速度的定义是</p>
+<p><br /><span class="math display">$$
+\sum_{i}^{}m_iv_i=Mv_c\\
+\sum_{i}^{}m_iv_i'=0
 $$</span><br /></p>
 <p>所以</p>
-<p><br /><span class="math display">∇<sub><em>A</em></sub>|<em>A</em>| = (<em>A</em><sup>*</sup>)<sup><em>T</em></sup> = |<em>A</em>|(<em>A</em><sup> − 1</sup>)<sup><em>T</em></sup></span><br /></p>
-<h2 id="雅可比矩阵">雅可比矩阵</h2>
-<p>考虑更广泛的函数<span class="math inline"><em>y</em> = <em>f</em>(<em>x</em>) : ℝ<sup><em>n</em></sup> → ℝ<sup><em>m</em></sup></span>，则记广义的梯度为雅可比矩阵</p>
 <p><br /><span class="math display">$$
-\left[\begin{matrix}
-\frac{\partial{y_1}}{\partial{x_1}} &amp; \frac{\partial{y_1}}{\partial{x_2}} &amp; ... &amp; \frac{\partial{y_1}}{\partial{x_n}}\\
-\frac{\partial{y_2}}{\partial{x_1}} &amp; \frac{\partial{y_2}}{\partial{x_2}} &amp; ... &amp; \frac{\partial{y_2}}{\partial{x_n}}\\
-...\\
-\frac{\partial{y_m}}{\partial{x_1}} &amp; \frac{\partial{y_m}}{\partial{x_2}} &amp; ... &amp; \frac{\partial{y_m}}{\partial{x_n}}\\
-\end{matrix}\right]_{m\times n}
+K_{total}=K_c+\sum_{i}^{}K'_i
 $$</span><br /></p>
-<p>注意这里<span class="math inline"><em>y</em></span>一个梯度变成行了。</p>
-<p>然后还要定义对矩阵求导<span class="math inline"><em>y</em> = <em>f</em>(<em>A</em>) : ℝ<sup><em>n</em>, <em>n</em></sup> → ℝ</span></p>
+<p>给了我们一种新的计算总体的动能的方法。</p>
+<p>然而和图论的柯尼希定理并没有什么关系。</p>
+<p>一质量为<span class="math inline"><em>m</em></span>，半径为<span class="math inline"><em>R</em></span>的细圆环在地面上无摩擦以<span class="math inline"><em>ω</em></span>的角速度滚动，求圆环动能。</p>
+<p><span class="math inline">$K_{total}=\frac{1}{2}m(\omega R)^2+\sum_{i}^{}\frac{1}{2} m_i(\omega R)^2=2\times \frac{1}{2}m\omega^2R^2=m\omega^2R^2$</span> # 质心运动定理 与之类似的就是大物提到的质心运动定理</p>
 <p><br /><span class="math display">$$
-\nabla_{A}=\left[\begin{matrix}
-\frac{\partial{y}}{\partial{a_{1,1}}} &amp; \frac{\partial{y}}{\partial{a_{1,2}}} &amp; ... &amp; \frac{\partial{y}}{\partial{a_{1,n}}}\\
-\frac{\partial{y}}{\partial{a_{2,1}}} &amp; \frac{\partial{y}}{\partial{a_{2,2}}} &amp; ... &amp; \frac{\partial{y}}{\partial{a_{2,n}}}\\
-...\\
-\frac{\partial{y}}{\partial{a_{n,1}}} &amp; \frac{\partial{y}}{\partial{a_{n,2}}} &amp; ... &amp; \frac{\partial{y}}{\partial{a_{n,n}}}\\
-\end{matrix}\right]
+E_k=\frac{1}{2}J_Cw^2+\frac{1}{2}m_Cv_C^2
 $$</span><br /></p>
-<p>拉格朗日乘子之类的东西放到后面写。</p>
+<p>意思是，质点系的动能是绕过质心的轴转动的动能加上质心运动的动能。</p>
 
                 
               </div>
@@ -362,11 +316,7 @@ $$</span><br /></p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/cs229/" class="print-no-link">#cs229</a>
-      
-        <a href="/tags/ai/" class="print-no-link">#ai</a>
-      
-        <a href="/tags/ml/" class="print-no-link">#ml</a>
+        <a href="/tags/physics/" class="print-no-link">#physics</a>
       
     </div>
   
@@ -378,8 +328,8 @@ $$</span><br /></p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CS229: 0</div>
-      <div>http://example.com/2025/04/21/2025-04-21-cs229_0/</div>
+      <div>大学物理: 柯尼希定理</div>
+      <div>http://example.com/2025/04/22/2025-04-22-konig/</div>
     </div>
     <div class="license-meta">
       
@@ -391,7 +341,7 @@ $$</span><br /></p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年4月21日</div>
+          <div>2025年4月22日</div>
         </div>
       
       
@@ -423,15 +373,15 @@ $$</span><br /></p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/22/2025-04-22-konig/" title="大学物理: 柯尼希定理">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">大学物理: 柯尼希定理</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2025/04/21/2025-04-21-cs229_0/" title="CS229: 0">
+                        <span class="hidden-mobile">CS229: 0</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
