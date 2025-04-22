@@ -27,7 +27,7 @@
 <meta property="og:description" content="广义线性模型, Generalized Linear Model">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-22T04:30:54.760Z">
+<meta property="article:modified_time" content="2025-04-22T04:36:53.050Z">
 <meta property="article:author" content="llz3724">
 <meta property="article:tag" content="cs229">
 <meta property="article:tag" content="ai">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.4k 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          11 分钟
+          12 分钟
         
       </span>
     
@@ -386,8 +386,16 @@ P(y;\eta)=b(y)\exp(\eta^TT(y)-a(\eta))
 $$</span><br /></p>
 <p>然后套用GLM，<span class="math inline">$\eta_i=\theta_i^Tx,\frac{\phi_i}{\phi_k}=e^{\theta_i^Tx}$</span></p>
 <p>规定<span class="math inline"><em>η</em><sub><em>k</em></sub> = 0, <em>θ</em><sub><em>k</em></sub> = 0</span></p>
-<p>再代入 $$ <em>{i=1}^{k-1}</em>{k-1}+<em>k=1\ </em>{i=1}^{k-1}_ke^{_i^Tx}+_k=1\ <em>k </em>{i=1}<sup>{k}e</sup>{<em>i^Tx}=1\ </em>{i=1}<sup>{k}e</sup>{_i^Tx}=1\ _i=</p>
-<p>$$</p>
+<p>再代入 
+$$
+\sum_{i=1}^{k-1}\phi_{k-1}+\phi_k=1\\
+\sum_{i=1}^{k-1}\phi_ke^{\theta_i^Tx}+\phi_k=1\\
+\phi_k \sum_{i=1}^{k}e^{\theta_i^Tx}=1\\
+\frac{\phi_i}{e^{\theta_i^Tx}}\sum_{i=1}^{k}e^{\theta_i^Tx}=1\\
+\phi_i=\frac{e^{\theta_i^Tx}}{\sum_{i=1}^{k}e^{\theta_i^Tx}}
+
+$$
+</p>
 <p>也就得到了softmax函数</p>
 <p>然后做极大似然估计</p>
 <p>$$ L()=_{i=1}<sup>{n}P(y</sup>{(i)}|x^{(i)})\</p>
@@ -417,8 +425,14 @@ $$</span><br /></p>
 <p>$$</p>
 <p>考虑最简单的情况，<span class="math inline"><em>η</em> ∈ ℝ, <em>T</em>(<em>y</em>) = <em>y</em></span></p>
 <p>然后使用一点积分技巧</p>
+
 $$
-<p>$$</p>
+\begin{aligned}
+E(Y|X)&=\int yP(y)\mathrm{d}y\\&=\frac{1}{\exp(a(\eta))}\int yb(y)\exp(\eta^TT(y))\mathrm{d}y\\&=\frac{1}{\exp(a(\eta))}\int \frac{\partial{b(y)\exp(\eta y)}}{\partial{\eta}}\mathrm{d}y\\
+&=\frac{1}{\exp(a(\eta))}\frac{\partial{}}{\partial{\eta}}\int b(y)\exp(\eta y)\mathrm{d}y\\&=\frac{1}{\exp(a(\eta))}\frac{\partial{}}{\partial{\eta}}\exp(a(\eta))\\&=a'(\eta)\\&=\frac{\partial{a}}{\partial{\eta}}
+\end{aligned}
+$$
+
 <p>2</p>
 <p><br /><span class="math display">$$
 Var(Y|X)=\frac{\partial^2{a(\eta)}}{\partial{\eta}^2}
