@@ -27,7 +27,7 @@
 <meta property="og:description" content="广义线性模型, Generalized Linear Model">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-22T03:41:25.830Z">
+<meta property="article:modified_time" content="2025-04-22T03:42:54.810Z">
 <meta property="article:author" content="llz3724">
 <meta property="article:tag" content="cs229">
 <meta property="article:tag" content="ai">
@@ -236,7 +236,7 @@
         
         
         
-          12 分钟
+          11 分钟
         
       </span>
     
@@ -417,10 +417,8 @@ $$</span><br /></p>
 <p>$$</p>
 <p>考虑最简单的情况，<span class="math inline"><em>η</em> ∈ ℝ, <em>T</em>(<em>y</em>) = <em>y</em></span></p>
 <p>然后使用一点积分技巧</p>
-<p><br /><span class="math display">$$
-E(Y|X)=\int yP(y)\mathrm{d}y=\frac{1}{\exp(a(\eta))}\int yb(y)\exp(\eta^TT(y))\mathrm{d}y=\frac{1}{\exp(a(\eta))}\int \frac{\partial{b(y)\exp(\eta y)}}{\partial{\eta}}\mathrm{d}y\\
-=\frac{1}{\exp(a(\eta))}\frac{\partial{}}{\partial{\eta}}\int b(y)\exp(\eta y)\mathrm{d}y=\frac{1}{\exp(a(\eta))}\frac{\partial{}}{\partial{\eta}}\exp(a(\eta))=a'(\eta)=\frac{\partial{a}}{\partial{\eta}}
-$$</span><br /></p>
+$$
+<p>$$</p>
 <ul>
 <li></li>
 </ul>
