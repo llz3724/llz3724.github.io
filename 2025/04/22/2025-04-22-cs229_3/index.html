@@ -27,7 +27,7 @@
 <meta property="og:description" content="广义线性模型, Generalized Linear Model">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-22T03:40:24.160Z">
+<meta property="article:modified_time" content="2025-04-22T03:41:25.830Z">
 <meta property="article:author" content="llz3724">
 <meta property="article:tag" content="cs229">
 <meta property="article:tag" content="ai">
@@ -407,10 +407,11 @@ $$</span><br /></p>
 <p>核心的思想还是要线性化。</p>
 <p>但主要还是因为良好的性质。</p>
 <ul>
-<li><br /><span class="math display">$$
-E(Y|X)=\frac{\partial{a(\eta)}}{\partial{\eta}}
-$$</span><br /></li>
+<li></li>
 </ul>
+<p><br /><span class="math display">$$
+E(Y|X)=\frac{\partial{a(\eta)}}{\partial{\eta}}
+$$</span><br /></p>
 <p>考虑概率律</p>
 <p>$$ P(y|x)=b(y)(^TT(y)-a())\ P(y)y=1\ b(y)(^TT(y))y=(a())\</p>
 <p>$$</p>
@@ -421,15 +422,16 @@ E(Y|X)=\int yP(y)\mathrm{d}y=\frac{1}{\exp(a(\eta))}\int yb(y)\exp(\eta^TT(y))\m
 =\frac{1}{\exp(a(\eta))}\frac{\partial{}}{\partial{\eta}}\int b(y)\exp(\eta y)\mathrm{d}y=\frac{1}{\exp(a(\eta))}\frac{\partial{}}{\partial{\eta}}\exp(a(\eta))=a'(\eta)=\frac{\partial{a}}{\partial{\eta}}
 $$</span><br /></p>
 <ul>
-<li><br /><span class="math display">$$
-Var(Y|X)=\frac{\partial^2{a(\eta)}}{\partial{\eta}^2}
-$$</span><br /></li>
+<li></li>
 </ul>
+<p><br /><span class="math display">$$
+Var(Y|X)=\frac{\partial^2{a(\eta)}}{\partial{\eta}^2}
+$$</span><br /></p>
 <p>考虑方差和均值的关系，还是用类似的技巧。</p>
 <ul>
 <li>GLM是凸的。</li>
 </ul>
-<p>做极大似然估计，对<span class="math inline"><em>l</em>(<em>θ</em>)</span>求海森矩阵</p>
+<p>做极大似然估计，对<span class="math inline"><em>l</em>(<em>θ</em>)</span>求海森矩阵即可</p>
 <p>$$ H_{j,k}=_{}<sup>{}a’’(</sup>Tx<sup>{(i)})x</sup>{(i)}_jx^{(i)}_k\</p>
 <p>v^THv=_{}<sup>{}a’’(</sup>Tx<sup>{(i)})x</sup>{(i)}<em>jx<sup>{(i)}<em>kv_jv_k=</em>{i=1}</sup>{n}a’’(<sup>Tx</sup>{(i)})(</em>{j}<sup>{}x</sup>{(i)}_jv_j)^2 $$</p>
 
