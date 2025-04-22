@@ -27,7 +27,7 @@
 <meta property="og:description" content="广义线性模型, Generalized Linear Model">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-22T03:53:18.230Z">
+<meta property="article:modified_time" content="2025-04-22T03:58:13.700Z">
 <meta property="article:author" content="llz3724">
 <meta property="article:tag" content="cs229">
 <meta property="article:tag" content="ai">
@@ -288,21 +288,19 @@
 <p>称为指数族分布，这里的分号表示该概率用参数<span class="math inline"><em>η</em></span>表示，可以理解为<span class="math inline"><em>η</em></span>决定了这个分布。</p>
 <p><span class="math inline"><em>T</em>(<em>y</em>)</span>被称作统计充分量，一般是<span class="math inline"><em>y</em></span>，或者是和<span class="math inline"><em>y</em></span>有关的向量。严谨的定义是包含了分布的全部信息的量。</p>
 <h2 id="一些练习">一些练习</h2>
-<ol type="1">
-<li><p>证明伯努利分布可以写成指数族分布</p>
+<h3 id="证明伯努利分布可以写成指数族分布">证明伯努利分布可以写成指数族分布</h3>
 <p>$$ P(y;)=<sup>y(1-)</sup>{1-y} \ P(y;)=y+(1-y)(1-) \</p>
 <p>P(y;)=y +(1-) \</p>
 <p>P(y;)=(y +(1-)) \</p>
 <p>=,= \</p>
-<p>P(y|x;)=(y-(e^{}+1)) \ T(y)=y,=,b(y)=1,a()=(e^{}+1) $$</p></li>
-<li><p>证明正态分布可以写成指数族分布</p>
+<p>P(y|x;)=(y-(e^{}+1)) \ T(y)=y,=,b(y)=1,a()=(e^{}+1) $$</p>
+<h3 id="证明正态分布可以写成指数族分布">证明正态分布可以写成指数族分布</h3>
 <p>假设标准差是1</p>
 <p>$$ P(y;)=(-) \ P(y;)=(-) \ P(y;)=(-+y-) \ P(y;)=(-)(y -) \</p>
 <p>$$</p>
 <p>故这里的<span class="math inline"><em>η</em></span>实际上就是<span class="math inline"><em>μ</em></span></p>
 <p>$$ = \ T(y)=y,b(y)=(-),a()=</p>
-<p>$$</p></li>
-</ol>
+<p>$$</p>
 <h2 id="构造广义线性模型glm">构造广义线性模型（GLM）</h2>
 <ol type="1">
 <li>假设 <span class="math inline"><em>y</em>|<em>x</em>; <em>θ</em> ∼ <em>e</em><em>x</em><em>p</em><em>o</em><em>t</em><em>e</em><em>n</em><em>i</em><em>a</em><em>l</em><em>f</em><em>a</em><em>m</em><em>i</em><em>l</em><em>y</em>(<em>η</em>)</span>，给定了<span class="math inline"><em>x</em>, <em>θ</em></span>，<span class="math inline"><em>y</em></span>的分布由<span class="math inline"><em>η</em></span>决定</li>
@@ -311,20 +309,16 @@
 </ol>
 <p>至于为什么要做这些假设呢？首先，有一个先验的概率模型是重要的，然后，用线性来表示概率模型的参数是方便的，所以有了这种方法。</p>
 <h2 id="一些练习-1">一些练习</h2>
-<ol type="1">
-<li>构建逻辑回归的GLM</li>
-</ol>
+<h3 id="构建逻辑回归的glm">构建逻辑回归的GLM</h3>
 <p>用上面的结果</p>
-<pre><code class="hljs">$$
-h_\theta(x)=E(y|x;\theta)=\phi=\frac&#123;1&#125;&#123;1+e^&#123;-\eta&#125;&#125;=\frac&#123;1&#125;&#123;1+e^&#123;-\theta^Tx&#125;&#125;
-$$</code></pre>
-<ol start="2" type="1">
-<li><p>构建线性回归的GLM</p>
+<p><br /><span class="math display">$$
+h_\theta(x)=E(y|x;\theta)=\phi=\frac{1}{1+e^{-\eta}}=\frac{1}{1+e^{-\theta^Tx}}
+$$</span><br /></p>
+<h3 id="构建线性回归的glm">构建线性回归的GLM</h3>
 <p>用上面的结果，假设均值是0，标准差是1</p>
-<p><br /><span class="math display"><em>h</em><sub><em>θ</em></sub>(<em>x</em>) = <em>E</em>(<em>y</em>|<em>x</em>; <em>θ</em>) = <em>μ</em> = <em>η</em> = <em>θ</em><sup><em>T</em></sup><em>x</em></span><br /></p></li>
-<li><p>构建泊松分布的GLM</p>
-<p>作业代码里有</p></li>
-</ol>
+<p><br /><span class="math display"><em>h</em><sub><em>θ</em></sub>(<em>x</em>) = <em>E</em>(<em>y</em>|<em>x</em>; <em>θ</em>) = <em>μ</em> = <em>η</em> = <em>θ</em><sup><em>T</em></sup><em>x</em></span><br /></p>
+<h3 id="构建泊松分布的glm">构建泊松分布的GLM</h3>
+<p>作业代码里有</p>
 <h2 id="多分类和softmax">多分类和softmax</h2>
 <p>现在用GLM的思想来建模多分类问题。</p>
 <p>假设一共有<span class="math inline"><em>k</em></span>个类别。</p>
@@ -408,11 +402,10 @@ $$</span><br /></p>
 <h2 id="why-glm">why GLM?</h2>
 <p>核心的思想还是要线性化。</p>
 <p>但主要还是因为良好的性质。</p>
-<ol type="1">
-<li><br /><span class="math display">$$
+<p>1</p>
+<p><br /><span class="math display">$$
 E(Y|X)=\frac{\partial{a(\eta)}}{\partial{\eta}}
-$$</span><br /></li>
-</ol>
+$$</span><br /></p>
 <p>考虑概率律</p>
 <p>$$ P(y|x)=b(y)(^TT(y)-a())\ P(y)y=1\ b(y)(^TT(y))y=(a())\</p>
 <p>$$</p>
@@ -420,15 +413,13 @@ $$</span><br /></li>
 <p>然后使用一点积分技巧</p>
 $$
 <p>$$</p>
-<ol start="2" type="1">
-<li><br /><span class="math display">$$
+<p>2</p>
+<p><br /><span class="math display">$$
 Var(Y|X)=\frac{\partial^2{a(\eta)}}{\partial{\eta}^2}
-$$</span><br /></li>
-</ol>
+$$</span><br /></p>
 <p>考虑方差和均值的关系，还是用类似的技巧。</p>
-<ol start="3" type="1">
-<li>GLM是凸的。</li>
-</ol>
+<p>3</p>
+<p>GLM是凸的。</p>
 <p>做极大似然估计，对<span class="math inline"><em>l</em>(<em>θ</em>)</span>求海森矩阵即可</p>
 <p>$$ H_{j,k}=_{}<sup>{}a’’(</sup>Tx<sup>{(i)})x</sup>{(i)}_jx^{(i)}_k\</p>
 <p>v^THv=_{}<sup>{}a’’(</sup>Tx<sup>{(i)})x</sup>{(i)}<em>jx<sup>{(i)}<em>kv_jv_k=</em>{i=1}</sup>{n}a’’(<sup>Tx</sup>{(i)})(</em>{j}<sup>{}x</sup>{(i)}_jv_j)^2 $$</p>
