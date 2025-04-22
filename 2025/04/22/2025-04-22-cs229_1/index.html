@@ -27,7 +27,7 @@
 <meta property="og:description" content="线性回归, Linear Regression">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-22T12:50:22.840Z">
+<meta property="article:modified_time" content="2025-04-22T13:19:16.930Z">
 <meta property="article:author" content="llz3724">
 <meta property="article:tag" content="cs229">
 <meta property="article:tag" content="ai">
@@ -227,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          2.6k 字
         
       </span>
     
@@ -238,7 +238,7 @@
         
         
         
-          21 分钟
+          22 分钟
         
       </span>
     
@@ -436,6 +436,8 @@ M347 1759 V0 H263 V1759 v1200 v1759 h84z"/></svg></span></span></span><span clas
 <p>其中<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi></mrow><annotation encoding="application/x-tex">\tau</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span></span></span></span>是人为设定的，决定多远的已知点能起作用。</p>
 <h2 id="梯度下降的动量法">梯度下降的动量法</h2>
 <p>更多优化器请参考CS230笔记。</p>
+<p>简单来说，就是梯度下降时考虑前面几个版本的增量，和一个指数级数做卷积，相当于滑动窗口。</p>
+<p>可以写成动量守恒的碰撞的形式，相当于梯度下降考虑了惯性，所以叫动量法。</p>
 <h2 id="K近邻算法-K-Nearest-Neighbor-KNN">K近邻算法(K-Nearest Neighbor, KNN)</h2>
 <p>在前面的局部线性回归提到的优化算法之一，也可以用于逻辑回归（分类），在线地输入每个点，根据最近的k个点所属的类别来确定该点的类别。</p>
 <h3 id="k-d-tree">k-d tree</h3>
