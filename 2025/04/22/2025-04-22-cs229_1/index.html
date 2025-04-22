@@ -27,7 +27,7 @@
 <meta property="og:description" content="线性回归, Linear Regression">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-22T04:09:41.980Z">
+<meta property="article:modified_time" content="2025-04-22T04:10:08.750Z">
 <meta property="article:author" content="llz3724">
 <meta property="article:tag" content="cs229">
 <meta property="article:tag" content="ai">
@@ -236,7 +236,7 @@
         
         
         
-          17 分钟
+          16 分钟
         
       </span>
     
@@ -313,7 +313,7 @@ $$
 \theta:=\theta-\alpha \nabla_{\theta}J(\theta)=\theta-\alpha X^T(X\theta-y)=\theta+\alpha\sum_{i=1}^{n}x^{(i)}(y^{(i)}-\theta^Tx^{(i)})
 $$</span><br /></p>
 <h2 id="多元线性回归的损失函数的合理性">多元线性回归的损失函数的合理性</h2>
-<p>一般来说，多元线性回归的求解中，先是假定了损失函数</p>
+<p>刚刚先是基于距离假定了损失函数</p>
 <p><br /><span class="math display">$$J(\theta)=\frac{1}{2}  \sum_{i=1}^{n} ||y^{(i)}-\theta ^T x^{(i)}||^2$$</span><br /></p>
 <p>然后求导，做梯度下降更新参数。</p>
 <p>看起来损失函数的设置来源于统计学的直觉，但是为什么对，或者说为什么合理呢？</p>
